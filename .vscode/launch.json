@@ -11,7 +11,19 @@
             "outFiles": [
                 "${workspaceFolder}/out/**/*.js"
             ],
-            "preLaunchTask": "Compile Extension"
+            "preLaunchTask": "${workspaceFolder}/.vscode/tasks.json:tsc: build - tsconfig.json"
+        },
+        {
+            "name": "Run Extension (No Build)",
+            "type": "extensionHost", 
+            "request": "launch",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "skipFiles": ["<node_internals>/**"]
         },
         {
             "name": "Extension Tests",
