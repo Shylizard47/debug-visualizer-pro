@@ -11,7 +11,7 @@
             "outFiles": [
                 "${workspaceFolder}/out/**/*.js"
             ],
-            "preLaunchTask": "${workspaceFolder}/.vscode/tasks.json:tsc: build - tsconfig.json"
+            "preLaunchTask": "Ready to Run (No Build Required)"
         },
         {
             "name": "Run Extension (No Build)",
@@ -35,8 +35,7 @@
             ],
             "outFiles": [
                 "${workspaceFolder}/out/test/**/*.js"
-            ],
-            "preLaunchTask": "Compile Extension"
+            ]
         }
     ]
 }

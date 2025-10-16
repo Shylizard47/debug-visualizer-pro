@@ -51,6 +51,21 @@
         },
         {
             "type": "shell",
+            "label": "Ready to Run (No Build Required)",
+            "command": "echo",
+            "args": ["Extension is ready! Use F5 to run or the 'Run Extension (No Build)' launch configuration."],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
             "label": "Watch Extension",
             "command": "npm",
             "args": ["run", "watch"],
