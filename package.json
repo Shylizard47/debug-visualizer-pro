@@ -1,0 +1,138 @@
+{
+  "name": "debug-visualizer-pro",
+  "displayName": "Debug Visualizer Pro",
+  "description": "Universal JGrasp-style data structure visualization for all programming languages",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Visualization",
+    "Data Science"
+  ],
+  "keywords": [
+    "data-structures",
+    "visualization",
+    "debug",
+    "trees",
+    "graphs",
+    "arrays",
+    "lists",
+    "c++",
+    "java",
+    "python",
+    "javascript",
+    "jgrasp"
+  ],
+  "activationEvents": [
+    "onDebugInitialConfigurations",
+    "onDebugResolve", 
+    "onCommand:dataVisualizer.show",
+    "onDebug"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dataVisualizer.show",
+        "title": "Show Data Structure",
+        "category": "Debug Visualizer"
+      },
+      {
+        "command": "dataVisualizer.refresh",
+        "title": "Refresh Visualization",
+        "category": "Debug Visualizer",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "dataVisualizer.showArray",
+        "title": "Visualize Array/List",
+        "category": "Debug Visualizer"
+      },
+      {
+        "command": "dataVisualizer.showTree",
+        "title": "Visualize Tree Structure",
+        "category": "Debug Visualizer"
+      },
+      {
+        "command": "dataVisualizer.showGraph",
+        "title": "Visualize Graph/Network",
+        "category": "Debug Visualizer"
+      },
+      {
+        "command": "dataVisualizer.showStack",
+        "title": "Visualize Stack/Queue",
+        "category": "Debug Visualizer"
+      }
+    ],
+    "views": {
+      "debug": [
+        {
+          "id": "dataStructureView",
+          "name": "Data Structures",
+          "when": "inDebugMode"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "dataVisualizer.refresh", 
+          "when": "view == dataStructureView",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "dataVisualizer.show",
+          "when": "inDebugMode"
+        },
+        {
+          "command": "dataVisualizer.showArray",
+          "when": "inDebugMode"
+        },
+        {
+          "command": "dataVisualizer.showTree", 
+          "when": "inDebugMode"
+        },
+        {
+          "command": "dataVisualizer.showGraph",
+          "when": "inDebugMode"
+        },
+        {
+          "command": "dataVisualizer.showStack",
+          "when": "inDebugMode"
+        }
+      ],
+      "debug/variables/context": [
+        {
+          "command": "dataVisualizer.show",
+          "when": "debugType && variable",
+          "group": "visualization"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "esbuild src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --target=node16",
+    "watch": "npm run compile -- --watch",
+    "package": "vsce package",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "esbuild": "^0.17.11",
+    "typescript": "^4.9.4",
+    "@vscode/test-electron": "^2.2.3",
+    "@vscode/vsce": "^2.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shylizard47/debug-visualizer-pro.git"
+  },
+  "publisher": "Shylizard47",
+  "license": "MIT"
+}
